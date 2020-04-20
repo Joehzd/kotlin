@@ -4,9 +4,9 @@ files:
 - name: test/CoffeeMachineTest.java
   visible: false
   text: |
-    import org.hyperskill.hstest.v6.stage.BaseStageTest;
-    import org.hyperskill.hstest.v6.testcase.CheckResult;
-    import org.hyperskill.hstest.v6.testcase.TestCase;
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testcase.TestCase;
     import machine.MainKt;
 
     import java.util.ArrayList;
@@ -21,7 +21,7 @@ files:
         }
     }
 
-    public class CoffeeMachineTest extends BaseStageTest<TestClue> {
+    public class CoffeeMachineTest extends StageTest<TestClue> {
 
         public CoffeeMachineTest() {
             super(MainKt.class);
@@ -57,7 +57,7 @@ files:
             String[] lines = reply.trim().split("\\n");
 
             if (lines.length <= 1) {
-                return CheckResult.FALSE;
+                return CheckResult.wrong("");
             }
 
             String[] clueLines = clue.string.trim().split("\\n");
@@ -191,7 +191,7 @@ files:
                             "amount should be zero");
                 }
 
-                return CheckResult.TRUE;
+                return CheckResult.correct();
             }
 
             else if (action.equals("buy")) {
@@ -230,7 +230,7 @@ files:
                                 "money amount should be increased by 4");
                     }
 
-                    return CheckResult.TRUE;
+                    return CheckResult.correct();
 
                 }
 
@@ -266,7 +266,7 @@ files:
                                 "money amount should be increased by 7");
                     }
 
-                    return CheckResult.TRUE;
+                    return CheckResult.correct();
                 }
 
                 else if (option.equals("3")) {
@@ -301,7 +301,7 @@ files:
                                 "money amount should be increased by 7");
                     }
 
-                    return CheckResult.TRUE;
+                    return CheckResult.correct();
                 }
             }
 
@@ -347,7 +347,7 @@ files:
                 }
 
 
-                return CheckResult.TRUE;
+                return CheckResult.correct();
 
             }
 

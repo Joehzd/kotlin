@@ -4,9 +4,9 @@ files:
 - name: test/CoffeeMachineTest.java
   visible: false
   text: |
-    import org.hyperskill.hstest.v6.stage.BaseStageTest;
-    import org.hyperskill.hstest.v6.testcase.CheckResult;
-    import org.hyperskill.hstest.v6.testcase.TestCase;
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testcase.TestCase;
     import machine.MainKt;
 
     import java.util.Arrays;
@@ -24,7 +24,7 @@ files:
         }
     }
 
-    public class CoffeeMachineTest extends BaseStageTest<TestClue> {
+    public class CoffeeMachineTest extends StageTest<TestClue> {
 
         public CoffeeMachineTest() {
             super(MainKt.class);
@@ -107,7 +107,7 @@ files:
                 if (amount > 0) {
                     boolean isCorrect = loweredOutput.contains(Integer.toString(amount));
                     if (isCorrect) {
-                        return CheckResult.TRUE;
+                        return CheckResult.correct();
                     } else {
 
                         String rightOutput =
@@ -118,17 +118,17 @@ files:
                             return new CheckResult(false,
                                 userOutput + " " + rightOutput);
                         } else {
-                            return CheckResult.FALSE;
+                            return CheckResult.wrong("");
                         }
                     }
                 }
-                return CheckResult.TRUE;
+                return CheckResult.correct();
             } else {
                 boolean cond1 = loweredOutput.contains("no");
                 boolean cond2 = loweredOutput.contains(Integer.toString(amount));
 
                 if (cond1 && cond2) {
-                    return CheckResult.TRUE;
+                    return CheckResult.correct();
                 } else {
 
                     String rightOutput = "No, I can make only " +
@@ -137,7 +137,7 @@ files:
                     if (clue.showTests) {
                         return new CheckResult(false, rightOutput);
                     } else {
-                        return CheckResult.FALSE;
+                        return CheckResult.wrong("");
                     }
                 }
             }
